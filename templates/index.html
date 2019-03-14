@@ -1,29 +1,53 @@
 <html>
+
     <head>
-        <title>My scratchboard page</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+        <title>BGH Simulator</title>
     </head>
 
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">BGH Simulator</a>
+                </div>
+            </div>
+        </nav>
 
-        <div>
-            This is the first dummy comment.
-        </div>
 
-        <div>
-            This is the the second dummy comment.  It's no more interesting
-            than the first.
-        </div>
+        <div class="container">
+            <div class="row">
+                Dies ist ein Spaß Simulator zur Generierung von BGH Urteilssprüchen. Er basiert auf einem Reoccurent Neural Network (RNN), welches mit einem Corpus von BGH Urteilszusammenfassungen aus den Jahren 2000 bis 2018 trainiert wurde.
+                Die verwendete Architektur ist AWD LSTM. Der Corpus wurde von Eugen Ruppert et al. erstellt und kann <a href="https://github.com/Kirikaku/LawStats/tree/master/src/main/resources/data/corpus">hier</a> eingesehen werden.
 
-        <div>
-            This is the third dummy comment.  It's actually quite exciting!
-        </div>
+            </div>
 
-        <div>
-            <form action="." method="POST">
-                <textarea name="contents" placeholder="Enter a comment"></textarea>
-                <input type="submit" value="Post comment">
-            </form>
-        </div>
+            <div class="row">
+                Gib einfach den Anfang eines Urteilsspruch unten in das Textfeld ein. Beispiel Eingaben wären "Der Angklagte wird" oder "Das Urteil ist".
+                Das RNN versucht dann das Urteil Wort für Wort weiter zu schreiben. Die verwendeten Wörter stammen dabei alle aus dem Corpus, die Sätze sind jedoch neu vom RNN erzeugt. Gib den Selben Anfang einfach nochmal ein
+                Falls die Antwort des RNN nicht zufriedenstellend ist :)
+            </div>
 
+            <div class="row">
+                <form action="." method="POST">
+                    <textarea name="contents" placeholder="Beginne einen Satz..." class="form-control"></textarea>
+                    <input type="submit" class="btn btn-success" value="Urteil generieren">
+                </form>
+            </div>
+            <div class="row">
+                <b>{{ urteil }}</b>
+            </div>
+        </div><!-- /.container -->
     </body>
 </html>
